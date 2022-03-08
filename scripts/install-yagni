@@ -1,0 +1,9 @@
+#!/bin/zsh
+cat <<EOF | ssh yagni -T
+  pip install flask waitress --user
+
+  git clone https://github.com/arctair/linkage-api linkage-api
+  cd linkage-api
+  ln -s $HOME/linkage-api/scripts/linkage-api.service $HOME/.config/systemd/user
+  systemctl enable linkage-api --user
+EOF
