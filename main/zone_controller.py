@@ -18,6 +18,8 @@ class ZoneController:
             return {'error': f'zone \'{id}\' does not exist'}, 404
 
     def create(self, id):
+        if id in self.zones:
+            return {'error': f'zone \'{id}\' already exists'}, 409
         zone = {'groups': []}
         self.zones[id] = zone
         return zone
