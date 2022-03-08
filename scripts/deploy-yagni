@@ -1,0 +1,8 @@
+#!/bin/zsh
+cat <<EOF | ssh yagni -T
+    cd /home/arctair/linkage-api
+    git fetch
+    git reset origin/main --hard
+    systemctl daemon-reload --user
+    systemctl restart linkage-api --user
+EOF
